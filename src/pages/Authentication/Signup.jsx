@@ -27,7 +27,7 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/users/register", formData);
+      const { data } = await axios.post("/api/register-user", formData);
       console.log(data);
 
       if (data.message === "User registered successfully") {

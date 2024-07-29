@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
 
 const HomePage = () => {
 

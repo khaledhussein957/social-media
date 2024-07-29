@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useUser } from "../../context/User-context";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -13,11 +13,11 @@ const Signin = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  // const { login, user } = useUser();
+  const { login, user } = useUser();
 
-  // useEffect(() => {
-  //   if (user) navigate('/');
-  // }, [user]);
+  useEffect(() => {
+    if (user) navigate('/');
+  }, [user]);
 
   const handleInputChange = (event) => {
     setFormData({
@@ -30,10 +30,10 @@ const Signin = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("/api/users/login", f);
+      const response = await axios.post("/api/login-user", formData);
       const data = await response.json();
       if (data.message === "Logged in successfully") {
-        // login(data.token, 3600000); // Login with 1 hour expiration
+        login(data.token, 3600000); // Login with 1 hour expiration
         toast.success("Logged in successfully!");
         setLoading(false);
         navigate("/");

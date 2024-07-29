@@ -1,70 +1,43 @@
-// FriendsPage.js
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import UserCard from './components/UserCard';
 
 const FriendsPage = () => {
   const [users, setUsers] = useState([]);
-  const [following, setFollowing] = useState({});
+  const [loading, setLoading] = useState(true);
+  const userId = localStorage.getItem('userId'); // Get user ID from localStorage
 
   useEffect(() => {
-    // fetch all users from API
-    const fetchUsers = async () => {
-      const response = await fetch('/api/users');
-      const data = await response.json();
-      setUsers(data);
+    const fetchFriends = async (userId) => {
+      try {
+        const data = await axios.get(`${BASE_URL}/following`, { params: { userId } });
+        setUsers(data);
+      } catch (error) {
+        console.error('Error fetching friendships:', error);
+      } finally {
+        setLoading(false);
+      }
     };
-    fetchUsers();
 
-    // fetch following status from API
-    const fetchFollowing = async () => {
-      const response = await fetch('/api/following');
-      const data = await response.json();
-      setFollowing(data);
-    };
-    fetchFollowing();
+    fetchFriends();
   }, []);
 
-  const handleFollow = (userId) => {
-    // update following status in API
-    const updateFollowing = async () => {
-      const response = await fetch(`/api/following/${userId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ following: !following[userId] }),
-      });
-      const data = await response.json();
-      setFollowing(data);
-    };
-    updateFollowing();
+  const handleFollowChange = (isFollowing) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user.id === userId ? { ...user, isFollowing } : user))
+    );
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h2 className="text-lg font-bold mb-4">All Users</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            <Link to={`/users/${user.id}`} className="text-gray-600 hover:text-gray-900">
-              {user.name}
-            </Link>
-            {following[user.id] ? (
-              <button
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => handleFollow(user.id)}
-              >
-                Unfollow
-              </button>
-            ) : (
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => handleFollow(user.id)}
-              >
-                Follow
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
+    <div className="container mx-auto">
+      {loading ? (
+        <div className="text-center py-16">Loading...</div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {users.map((user) => (
+            <UserCard key={user.id} user={user} isFollowing={user.isFollowing} onFollowChange={handleFollowChange} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
