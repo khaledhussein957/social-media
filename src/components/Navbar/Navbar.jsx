@@ -1,7 +1,6 @@
-// Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BellIcon, UserIcon } from '@heroicons/react/24/solid';
+import { BellIcon, UserIcon  } from '@heroicons/react/24/solid';
 
 const Navbar = () => {
   return (
@@ -10,7 +9,7 @@ const Navbar = () => {
         <Link to="/" className="text-lg font-bold">
           Home
         </Link>
-        <Link to="/friends" className="text-lg font-bold">
+        <Link className="text-lg font-bold">
           Friends
         </Link>
         <div className="flex items-center">
@@ -20,12 +19,12 @@ const Navbar = () => {
             <div className="absolute top-0 right-0 bg-white p-2 shadow-md">
               <ul>
                 <li>
-                  <Link to="/profile" className="text-gray-600 hover:text-gray-900">
+                  <Link className="text-gray-600 hover:text-gray-900">
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to="/logout" className="text-gray-600 hover:text-gray-900">
+                  <Link className="text-gray-600 hover:text-gray-900">
                     Logout
                   </Link>
                 </li>

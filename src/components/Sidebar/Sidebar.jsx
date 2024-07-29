@@ -8,12 +8,12 @@ const Sidebar = () => {
       <h2 className="text-lg font-bold mb-4">User Profile</h2>
       <ul>
         <li>
-          <Link to="/profile" className="text-gray-600 hover:text-gray-900">
+          <Link className="text-gray-600 hover:text-gray-900">
             Profile
           </Link>
         </li>
         <li>
-          <Link to="/friends" className="text-gray-600 hover:text-gray-900">
+          <Link className="text-gray-600 hover:text-gray-900">
             Friends
           </Link>
         </li>

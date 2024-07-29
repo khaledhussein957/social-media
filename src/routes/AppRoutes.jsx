@@ -7,6 +7,7 @@ import Home from '../pages/Home/Home'
 import AuthMiddleware from '../secure/Secure'
 import Sidebar from '../components/Sidebar/Sidebar'
 import Navbar from '../components/Navbar/Navbar'
+import FriendsPage from '../pages/Friends/Friends'
 
 
 function AppRoutes() {
@@ -15,7 +16,7 @@ function AppRoutes() {
       <BrowserRouter>
       <Routes>
         <Route
-          path="/api/users/login"
+          path="/login"
           element={
             <AuthMiddleware>
               <Signin />
@@ -23,7 +24,7 @@ function AppRoutes() {
           }
         />
         <Route
-          path="/api/users/register"
+          path="/register"
           element={
             <AuthMiddleware>
               <Signup />
@@ -33,7 +34,7 @@ function AppRoutes() {
         
           
             <Route path="/" exact element={ <Home />} />
-            <Route path="/friends"  />
+            <Route path="/friends"  element={ <FriendsPage /> } />
             <Route path="/profile"  />
 
         </Routes>

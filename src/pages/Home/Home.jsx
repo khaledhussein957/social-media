@@ -1,8 +1,16 @@
 // HomePage.js
 import React, { useState, useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
+
+    // const user = localStorage.getItem("user");
+    // if(!user){
+    //     <Navigate to='/api/users/login' replace />
+    // }
+
+
   const [feeds, setFeeds] = useState([]);
 
   useEffect(() => {

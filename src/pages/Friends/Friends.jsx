@@ -40,4 +40,33 @@ const FriendsPage = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-lg font-bold mb-
+      <h2 className="text-lg font-bold mb-4">All Users</h2>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <Link to={`/users/${user.id}`} className="text-gray-600 hover:text-gray-900">
+              {user.name}
+            </Link>
+            {following[user.id] ? (
+              <button
+                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => handleFollow(user.id)}
+              >
+                Unfollow
+              </button>
+            ) : (
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => handleFollow(user.id)}
+              >
+                Follow
+              </button>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default FriendsPage;
