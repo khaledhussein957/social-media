@@ -32,18 +32,23 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    loading(true);
 
     try {
       const { data } = await axios.post("/api/login-user", formData);
+      console.log(data);
       if (data.error) {
         toast.error(data.error);
+        loading(false);
       } else {
         login(data, data.token.expiresIn);
         toast.success(data.message);
+        loading(false);
         navigate("/");
       }
     } catch (error) {
       console.log(error);
+      loading(false);
     }
   };
 
@@ -54,7 +59,7 @@ function Login() {
         <input type="text" onChange={handleInputChange} />
         <label>password:</label>
         <input type="password" onChange={handleInputChange} />
-        <button>submit</button>
+        <button>{loading ? "..." : "Login"}</button>
         <Link to='/register' > Create new Account</Link>
       </form>
     </div>

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ProfilePage() {
 
-  const [ postData, setPostData ] = useState('');
+  const [ posts, setPosts ] = useState('');
   const [ loading, setLoading ] = useState(false);
   const { logout } = useUser();
   const navigate = useNavigate();
@@ -23,25 +23,24 @@ function ProfilePage() {
     });
   };
 
-  useEffect(() => {
+  const getPosts = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    const readUserPost = async () => {
-
-      setLoading(true);
-
-      try {
-        const {data} = await axios.get('/api/get-user-posts')
-        setPostData(data);
+    try {
+      const {data} = await axios.get('/api/all-posts');
+      if(data.error){
+        toast.error(data.error);
         setLoading(false);
-      } catch (error) {
-        console.log(error.message);
-        setLoading(false);
-        
       }
-    }
 
-    readUserPost();
-  }, []);
+      setPosts(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false)
+    }
+  }
 
 
   return (
@@ -56,6 +55,15 @@ function ProfilePage() {
         </button>
 
         <CreatePost />
+
+        <h2>All Posts</h2>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <PostCard post={post} />
+          </li>
+        ))}
+      </ul> 
 
       {/* {loading && <h1>loading...</h1>}
 
