@@ -1,29 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import UserInfo from '../UserDropdown/UserInfo'
-import { useUser } from '../../context/User-context';
 
 const Header = () => {
-  const { user } = useUser();
 
   return (
-    <header className="bg-sky-600 text-white py-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-lg font-bold">
+    <header>
+        <a href="/">
           Home
-        </Link>
-        <Link to="/friends" className="text-lg font-bold">
+        </a>
+        <a href="/friends">
           Friends
-        </Link>
-        <Link to="/notifications" className="text-lg font-bold">
+        </a>
+        <a href="/notification">
           Notifications
-        </Link>
-        {user && (
-          <div className="flex items-center">
-            <UserInfo />
-          </div>
-        )}
-      </div>
+        </a>
+        <a href="/profile" >
+          Profile
+        </a>
     </header>
   );
 };

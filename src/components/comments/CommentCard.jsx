@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Profile() {
+function CommentCard() {
   return (
     <div>
-      profile page
+      
     </div>
   )
 }
 
-export default Profile
+export default CommentCard
