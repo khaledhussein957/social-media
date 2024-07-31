@@ -17,7 +17,7 @@ function Home() {
 
   if(!user){
     useEffect(() => {
-      navigate('/login');
+      navigate('/auth/login');
     })
   }
 
@@ -28,7 +28,7 @@ function Home() {
       setLoading(true);
 
       try {
-        const {data} = await axios.get('/api/get-user-posts')
+        const {data} = await axios.get('/api/all-posts');
         setPosts(data);
         setLoading(false);
       } catch (error) {
@@ -48,9 +48,9 @@ function Home() {
       <h2>All Posts</h2>
       <ul>
         {posts.map((post) => (
-          <li key={post.id}>
-            <PostCard post={post} />
-          </li>
+          <div key={post.id}>
+            <PostCard content={posts} />
+          </div>
         ))}
       </ul> 
     </div>

@@ -1,30 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Sidebar = () => {
-
+function Sidebar() {
   return (
-    <aside className="bg-sky-600 text-white p-4">
-      <h2 className="text-lg font-bold mb-4">User Profile</h2>
-      <ul>
-        <li>
-          <Link to="/profile" className=" hover:text-gray-900">
-            Profile
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact" className=" hover:text-gray-900">
-            Contact
-          </Link>
-        </li>
-        <li>
-          <Link to="/developer-team" className=" hover:text-gray-900">
-            Developer Team
-          </Link>
-        </li>
-      </ul>
+    <aside className="bg-gray-900 text-white w-64 h-screen fixed top-0 left-0 flex flex-col">
+      <div className="flex-grow p-4">
+        <h2 className="text-xl font-bold mb-4">Menu</h2>
+        <ul>
+          <li className="py-2"><Link to='/contact' > Contac us </Link></li>
+          <li className="py-2"><Link to='/about' > Abaut us </Link></li>
+          <li className="py-2"><Link to='/devTeam' > Dev Team </Link></li>
+        </ul>
+      </div>
     </aside>
   );
-};
+}
 
 export default Sidebar;

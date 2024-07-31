@@ -1,59 +1,65 @@
-import React from 'react'
-import SearchBar from '../components/Searchbar/Searchbar'
-import { useUser } from '../context/User-context';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { useState } from 'react';
-import toast from 'react-hot-toast';
+import React from "react";
+import SearchBar from "../components/Searchbar/Searchbar";
+import { useUser } from "../context/User-context";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import UserCard from "../components/User/UserCard";
 
 function Friends() {
-
-  const [ userInfo, setUserInfo ] = useState(null);
-  const [ loading, setLoading ] = useState(false);
+  const [userInfo, setUserInfo] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const navigate = useNavigate();
 
-  if(!user){
+  if (!user) {
     useEffect(() => {
-      navigate('/login');
-    })
+      navigate("/auth/login");
+    });
   }
 
-  const getFollowing = async (e) => {
+  const fetchUsers = async (e) => {
     e.preventDefault();
-    loading(true);
+    setLoading(true);
 
     try {
-      const {data} = await axios.get('/api/following');
-      
-      if(data.error){
+      const { data } = await axios.get("/api/users/all-user");
+
+      if (data.error) {
         toast.error(data.error);
-        loading(false);
+        setLoading(false);
       }
 
       setUserInfo(data);
-      loading(false);
-
+      setLoading(false);
     } catch (error) {
       toast.error(error);
-      loading(false);
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div>
-      {userInfo && (
-        
-        <h3>Friends page</h3>,
-        <SearchBar />,
-        getFollowing()
+      <h2>All Users</h2>
+      <SearchBar />
 
-      )
-      
-      }
+      <div>
+        {userInfo ? (
+          <div>
+            {userInfo.map((users) => (
+              <div key={users.id}>
+                <UserCard User={userInfo} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Friends
+export default Friends;

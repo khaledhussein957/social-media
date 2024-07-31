@@ -13,24 +13,24 @@ const DeleteAccount = () => {
 
   if (!user) {
     useEffect(() => {
-      navigate("/login");
+      navigate("/auth/login");
     }, []);
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    loading(true);
+    setLoading(true);
 
     try {
       const { data } = await axios.delete("/api/delete-profile");
       console.log(data);
       toast.success(data.message);
       setUser(null);
-      loading(false);
-      navigate("/login");
+      setLoading(false);
+      navigate("/auht/login");
     } catch (error) {
       console.error(error);
-      loading(false);
+      setLoading(false);
     }
   };
 

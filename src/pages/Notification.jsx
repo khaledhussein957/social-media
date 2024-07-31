@@ -10,7 +10,7 @@ function Notification() {
 
   if(!user){
     useEffect(() => {
-      navigate('/login');
+      navigate('/auth/login');
     })
   }
 

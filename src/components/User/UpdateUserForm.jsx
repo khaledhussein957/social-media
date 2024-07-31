@@ -20,7 +20,7 @@ function UpdateUserForm() {
 
   if(!user){
     useEffect(() => {
-      navigate('/login');
+      navigate('/auth/login');
     }, [])
   }
 
@@ -33,27 +33,27 @@ function UpdateUserForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    loading(true)
+    setLoading(true)
 
     try {
-      const {data} = await axios.post('/api/update-profile' , formData);
+      const {data} = await axios.post('/api/users/update-profile' , formData);
       if(data.error){
         toast.error(data.error);
-        loading(false);
+        setLoading(false);
       } else{
         toast.success(data.message);
         setUser(null);
         navigate('/login');
-        loading(false);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
-      loading(false);
+      setLoading(false);
     }
   }
 
   return (
-    <div>
+    <div className=''>
       <form onSubmit={handleSubmit}>
         <label>firstName: </label>
         <input type="text" onChange={handleInputChange} />
