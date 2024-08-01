@@ -17,7 +17,7 @@ function Home() {
 
   if(!user){
     useEffect(() => {
-      navigate('/auth/login');
+      // navigate('/auth/login');
     })
   }
 
