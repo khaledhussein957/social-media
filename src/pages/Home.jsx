@@ -28,7 +28,8 @@ function Home() {
       setLoading(true);
 
       try {
-        const {data} = await axios.get('/api/all-posts');
+        const {data} = await axios.get('/api/posts/all-posts');
+        console.log(data);
         setPosts(data);
         setLoading(false);
       } catch (error) {

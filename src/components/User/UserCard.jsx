@@ -37,8 +37,8 @@ function UserCard({ User }) {
       <h2 className="text-lg">{User.username}</h2>
       <p className="text-gray-600">{User.email}</p>
 
-      <Link to='/update-profile'><button>Edit Account</button></Link>
-      <button onClick={deleteAccount}> {loading ?"Deleting..." :"Delete Account"} </button>
+      <Link to='/update-profile'> <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"> Edit Account </button></Link>
+      <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded' onClick={deleteAccount}> {loading ?"Deleting..." :"Delete Account"} </button>
     </div>
   )
 }

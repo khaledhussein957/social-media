@@ -8,8 +8,8 @@ function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/users");
-        const data = response.data;
+        const { data } = await axios.get("/api/users/me");
+        console.log(data);
         setUser(data);
       } catch (error) {
         console.error(error);
@@ -25,12 +25,7 @@ function Profile() {
       
       {user ? (
         <div>
-          {user.map((profile) => (
-            <div key={profile.id}>
             <UserCard User={user} />
-          </div>
-          ))}
-          {/* Edit and delete buttons */}
         </div>
       ) : (
         <p>Loading...</p>
