@@ -41,7 +41,7 @@ function Friends() {
   };
 
   return (
-    <div>
+    <div className="p-6">
       <h2>All Users</h2>
       <SearchBar />
 

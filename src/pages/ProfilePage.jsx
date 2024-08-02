@@ -19,8 +19,8 @@ function Profile() {
   }, []);
 
   return (
-    <div className="mt-20px justify-center items-center">
-      <h1>Profile page</h1>
+    <div className="p-6">
+      <h1 className="text-center">Profile page</h1>
 
       
       {user ? (
@@ -28,7 +28,7 @@ function Profile() {
             <UserCard User={user} />
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className="text-center"><p>Loading...</p></div>
       )}
     </div>
   );
