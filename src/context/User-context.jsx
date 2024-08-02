@@ -26,7 +26,8 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   const login = (userData, expiresIn) => {
-    const expirationTime = new Date().getTime() + expiresIn * 1000;
+    const expirationTime = expiresIn * 1000;
+    console.log(expirationTime);
 
     localStorage.setItem("expirationTime", expirationTime.toString());
     localStorage.setItem("user", JSON.stringify(userData));

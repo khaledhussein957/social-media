@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <UserProvider>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <Routes>
           <Route path="/auth/register" element={<Register />} />
           <Route path="/auth/login" element={<Login />} />

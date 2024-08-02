@@ -1,10 +1,8 @@
 import axios from 'axios';
-import React from 'react'
 import { useState } from 'react'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../../context/User-context';
-import { useEffect } from 'react';
 
 function UpdateUserForm() {
 
@@ -16,13 +14,13 @@ function UpdateUserForm() {
   });
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const { user, setUser } = useUser();
+  const { setUser } = useUser();
 
-  if(!user){
-    useEffect(() => {
-      navigate('/auth/login');
-    }, [])
-  }
+  // if(!user){
+  //   useEffect(() => {
+  //     navigate('/auth/login');
+  //   }, [])
+  // }
 
   const handleInputChange = async (e) => {
     setFormData({
@@ -43,7 +41,7 @@ function UpdateUserForm() {
       } else{
         toast.success(data.message);
         setUser(null);
-        navigate('/login');
+        navigate('/auth/login');
         setLoading(false);
       }
     } catch (error) {
@@ -55,9 +53,7 @@ function UpdateUserForm() {
   return (
     <div className=''>
       <form onSubmit={handleSubmit}>
-        <label>firstName: </label>
-        <input type="text" onChange={handleInputChange} />
-        <label>lastName: </label>
+        <label>username: </label>
         <input type="text" onChange={handleInputChange} />
         <label>email: </label>
         <input type="text" onChange={handleInputChange} />

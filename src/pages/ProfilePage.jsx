@@ -19,7 +19,7 @@ function Profile() {
   }, []);
 
   return (
-    <div>
+    <div className="mt-20px justify-center items-center">
       <h1>Profile page</h1>
 
       

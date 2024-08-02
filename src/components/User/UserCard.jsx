@@ -4,12 +4,14 @@ import { useUser } from '../../context/User-context';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useEffect } from 'react';
 
 function UserCard({ User }) {
 
   const [loading, setLoading] = useState();
   const navigate = useNavigate();
-  const {setUser} = useUser();
+  const { user ,setUser} = useUser();
 
   const deleteAccount = async (e) => {
     e.preventDefault();
@@ -33,7 +35,7 @@ function UserCard({ User }) {
 
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div className="bg-white justify-center items-center shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h2 className="text-lg">{User.username}</h2>
       <p className="text-gray-600">{User.email}</p>
 
