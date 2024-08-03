@@ -21,25 +21,25 @@ function Friends() {
     });
   }
 
-  const fetchUsers = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const { data } = await axios.get("/api/users/all-user");
-
-      if (data.error) {
-        toast.error(data.error);
+  useEffect(()=>{
+    const fetchUsers = async () => {
+  
+      try {
+        const { data } = await axios.get("/api/users/all-user");
+        console.log(data)
+  
+        if (data.error) {
+          toast.error(data.error);
+        }
+  
+        setUserInfo(data);
         setLoading(false);
+      } catch (error) {
+        toast.error(error);
       }
-
-      setUserInfo(data);
-      setLoading(false);
-    } catch (error) {
-      toast.error(error);
-      setLoading(false);
-    }
-  };
+    };
+    fetchUsers();
+  })
 
   return (
     <div className="p-6">
