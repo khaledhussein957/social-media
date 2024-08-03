@@ -101,7 +101,7 @@ i was actual need to develop responsive social network but Allah doesn't allowed
 
 ## Deployment
 
-I deployed the site search it.
+I deployed the site search it. error happens
 
 ```bash
   social-network-test.vercel.app
