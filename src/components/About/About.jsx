@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/User-context";
+import toast from "react-hot-toast";
 
 const About = () => {
 
@@ -10,7 +11,8 @@ const About = () => {
   if(!user){
     useEffect(() => {
       navigate('/auth/login');
-    })
+      toast.error('Please Login!');
+    },[]);
   }
   return (
     <div className="p-6">

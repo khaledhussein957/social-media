@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "React";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -17,9 +16,9 @@ const DeleteAccount = () => {
     }, []);
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleSubmit = async () => {
+    // ensure if user want to delete the Account
+    if(!confirm("Are you sure!")) return;
 
     try {
       const { data } = await axios.delete("/api/delete-profile");

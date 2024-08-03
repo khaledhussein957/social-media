@@ -1,5 +1,6 @@
 import { useUser } from "../../context/User-context";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 function DevTeam() {
@@ -8,6 +9,7 @@ function DevTeam() {
   if (!user) {
     useEffect(() => {
       navigate("/auth/login");
+      toast.error('Please Login!');
     });
   }
   return (

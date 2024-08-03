@@ -17,6 +17,7 @@ function Friends() {
   if (!user) {
     useEffect(() => {
       navigate("/auth/login");
+      toast.error('Please Login!');
     });
   }
 

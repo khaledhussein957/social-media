@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/User-context";
+import toast from "react-hot-toast";
 
 function Contact () {
 
@@ -10,6 +11,7 @@ function Contact () {
   if (!user) {
     useEffect(() => {
       navigate('/auth/login');
+      toast.error('Please Login!');
     });
   }
   return (

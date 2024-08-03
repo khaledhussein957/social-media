@@ -22,7 +22,7 @@ const CreatePost = () => {
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label className="sr-only">Your message</label>
       <div className="flex items-center px-3 py-2 rounded-lg bg-gray-50 dark:bg-gray-700">
         <textarea

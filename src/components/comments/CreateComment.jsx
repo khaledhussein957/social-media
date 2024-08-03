@@ -29,12 +29,13 @@ function CreateComment({postId}) {
   return (
     <form onSubmit={handleSubmit}>
       <input
+      className="bg-gray-50 mt-3 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         type="text"
         value={comment}
         onChange={(event) => setComment(event.target.value)}
         placeholder="Write a comment..."
       />
-      <button type="submit">Comment</button>
+      <button className="text-black mt-4 ml-28 w-[100px] h-12 bg-white text-[10px] m-[10px, 100px] pt-[8px] pb-[10px] rounded-[40px]" type="submit">Comment</button>
     </form>
   );
 }

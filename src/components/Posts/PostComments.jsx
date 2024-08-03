@@ -5,8 +5,9 @@ import CommentList from '../Comments/CommentList';
 const PostComments = ({ postId }) => {
   return (
     <div>
-      <CommentForm postId={postId} />
       <CommentList postId={postId} />
+      <hr />
+      <CommentForm postId={postId} />
     </div>
   );
 };

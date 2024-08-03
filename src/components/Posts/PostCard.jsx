@@ -1,13 +1,16 @@
-import React from 'react'
-import PostComments from './PostComments'
-
-function PostCard({ content }) {
+function PostCard({ post, onDelete }) {
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <p className="text-gray-600">{content}</p>
-      {/* <PostComments /> */}
+    <div className="bg-black w-[350px] h-[100px] rounded m-4 border">
+      <p className="text-white text-center">{post.content}</p>
+      <button
+        onClick={() => onDelete(post._id)}
+        className="bg-red-700  text-white rounded py-2 px-4"
+      >
+        {" "}
+        Delete Post
+      </button>
     </div>
-  )
+  );
 }
 
-export default PostCard
+export default PostCard;

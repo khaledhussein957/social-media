@@ -10,11 +10,9 @@ import About from "./components/About/About.jsx";
 import DevTeam from "./components/Dev Team/DevTeam.jsx";
 import UpdateUserForm from "./components/User/UpdateUserForm.jsx";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import { Router } from "react-router-dom";
 
 function App() {
   return (
-    // <Router>
       <UserProvider>
         <div className="flex">
           <Sidebar />
@@ -33,7 +31,6 @@ function App() {
           </div>
         </div>
       </UserProvider>
-    // </Router>
   );
 }
 

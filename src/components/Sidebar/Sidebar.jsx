@@ -19,6 +19,9 @@ const Sidebar = () => {
             <Link to="/about" className="block p-4 hover:bg-gray-700">About</Link>
           </li>
           <li>
+            <Link to="/devTeam" className="block p-4 hover:bg-gray-700">Developers</Link>
+          </li>
+          <li>
             <Link to="/contact" className="block p-4 hover:bg-gray-700">Contact</Link>
           </li>
         </ul>
